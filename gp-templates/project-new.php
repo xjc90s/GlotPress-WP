@@ -3,6 +3,10 @@ gp_title( __( 'Create New Project &lt; GlotPress', 'glotpress' ) );
 gp_breadcrumb( array(
 	__( 'Create New Project', 'glotpress' ),
 ) );
+
+gp_enqueue_script( 'select2' );
+gp_enqueue_style( 'select2' );
+	
 gp_tmpl_header();
 ?>
 <h2><?php _e( 'Create New Project', 'glotpress' ); ?></h2>

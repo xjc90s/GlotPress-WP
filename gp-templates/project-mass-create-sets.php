@@ -1,7 +1,11 @@
 <?php
 gp_title( sprintf( __( 'Mass-create Translation Sets &lt; %s &lt; GlotPress', 'glotpress' ),  $project->name ) );
 gp_breadcrumb_project( $project );
+
 gp_enqueue_script( 'gp-mass-create-sets-page' );
+gp_enqueue_script( 'select2' );
+gp_enqueue_style( 'select2' );
+
 wp_localize_script( 'gp-mass-create-sets-page', '$gp_mass_create_sets_options', array(
 	'url' => gp_url_join( gp_url_current(), 'preview' ),
 	'loading' => __( 'Loading translation sets to create&hellip;', 'glotpress' ),
@@ -15,10 +19,17 @@ Usually this is one of the parent projects.', 'glotpress' ); ?></p>
 <form action="<?php echo esc_url( gp_url_current() ); ?>" method="post">
 	<dl>
 		<dt><label for="project_id"><?php _e( 'Project to take translation sets from:', 'glotpress' );  ?></label></dt>
-		<dd><?php echo gp_projects_dropdown( 'project_id', null ); ?></dd>
+		<dd><?php echo gp_projects_dropdown( 'project_id', null, array( 'class' => 'projectdropdown' ) ); ?></dd>
 	</dl>
 	<div id="preview"></div>
 	<p><input type="submit" name="submit" value="<?php esc_attr_e( 'Create Translation Sets', 'glotpress' ); ?>" id="submit" /></p>
 	<?php gp_route_nonce_field( 'mass-create-transation-sets_' . $project->id ); ?>
 </form>
+
+<script type="text/javascript">
+jQuery( document ).ready(function() {
+  jQuery( ".projectdropdown" ).select2();
+});
+</script>
+
 <?php gp_tmpl_footer();

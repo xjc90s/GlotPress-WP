@@ -25,9 +25,16 @@
 	</dd>
 
 	<dt><label for="project[parent_project_id]"><?php _e( 'Parent Project', 'glotpress' ); ?></label></dt>
-	<dd><?php echo gp_projects_dropdown( 'project[parent_project_id]', $project->parent_project_id, array(), $project->id ); ?></dd>
+	<dd><?php echo gp_projects_dropdown( 'project[parent_project_id]', $project->parent_project_id, array( 'class' => 'projectdropdown' ), $project->id ); ?></dd>
 
 	<dt><label for="project[active]"><?php _e( 'Active', 'glotpress' ); ?></label> <input type="checkbox" id="project[active]" name="project[active]" <?php gp_checked( $project->active ); ?> /></dt>
 </dl>
+
+<script type="text/javascript">
+jQuery( document ).ready(function() {
+  jQuery( ".projectdropdown" ).select2();
+});
+</script>
+
 
 <?php echo gp_js_focus_on( 'project[name]' ); ?>

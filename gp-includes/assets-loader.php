@@ -17,6 +17,9 @@ function gp_styles_default() {
 
 	// Register the table sorter theme style.
 	wp_register_style( 'tablesorter-theme', $url . '/tablesorter.theme.glotpress.css', array(), '20150717' );
+
+	// Register the select2 style.
+	wp_register_style( 'select2', $url . '/vendor/select2.css', array(), '20150717' );
 }
 
 add_action( 'init', 'gp_styles_default' );
@@ -31,6 +34,8 @@ function gp_register_scripts() {
 
 	// Register our standard scripts.
 	wp_register_script( 'tablesorter', $url . '/vendor/jquery.tablesorter' . $suffix, array( 'jquery' ), '2.17.8' );
+	wp_register_script( 'select2', $url . '/vendor/select2' . $suffix, array( 'jquery' ), '4.0.3' );
+
 	wp_register_script( 'gp-common', $url . '/common' . $suffix, array( 'jquery' ), '20150430' );
 	wp_register_script( 'gp-editor', $url . '/editor' . $suffix, array( 'gp-common', 'jquery-ui-tooltip' ), '20160329' );
 	wp_register_script( 'gp-glossary', $url . '/glossary' . $suffix, array( 'gp-editor' ), '20160329' );

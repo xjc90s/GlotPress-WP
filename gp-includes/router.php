@@ -168,7 +168,7 @@ class GP_Router {
 				gp_tmpl_404();
 				return;
 			}
-			
+
 			$real_request_uri = substr( $real_request_uri, strlen( $this->api_prefix ) + 1 );
 		}
 

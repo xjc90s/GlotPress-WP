@@ -21,6 +21,10 @@ if ( ! defined( 'GP_TESTS_PATH' ) ) {
 	define( 'GP_TESTS_PATH', GP_PATH . 't/' );
 }
 
+if ( ! defined( 'GP_API_ENABLED' ) ) {
+	define( 'GP_API_ENABLED', false );
+}
+
 require_once( GP_PATH . GP_INC . 'gp.php' );
 
 global $wpdb, $gp_table_prefix;

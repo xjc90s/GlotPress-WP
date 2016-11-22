@@ -163,6 +163,12 @@ class GP_Router {
 		$http_methods = apply_filters( 'gp_router_http_methods', array( 'get', 'post', 'head', 'put', 'delete' ) );
 
 		if ( $api ) {
+			// If the API is not enabled, return a 404.
+			if ( false === GP_API_ENABLED ) {
+				gp_tmpl_404();
+				return;
+			}
+			
 			$real_request_uri = substr( $real_request_uri, strlen( $this->api_prefix ) + 1 );
 		}
 
